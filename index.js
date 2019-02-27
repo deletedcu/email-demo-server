@@ -6,18 +6,25 @@ require('dotenv').config();
 
 sendgrid.setApiKey(process.env.API_KEY);
 
+app.set('port', (process.env.PORT || 3000))
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', "*");
   res.header('Access-Control-Allow-Headers', "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
 
-app.listen(3001, () => {
-  console.log('server is running on port 3001');
+app.listen(app.get('port'), function () {
+  console.log("Node app is running at localhost:" + app.get('port'))
+});
+
+app.get('/', function (req, res) {
+  res.send({ success: true, message: 'this is a node backend'});
 });
 
 app.post('/send', async function (req, res) {
