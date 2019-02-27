@@ -33,63 +33,128 @@ app.post('/send', async function (req, res) {
     <!doctype html>
       <html>
         <head>
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <style type="text/css">
+            * {
+              box-sizing: border-box;
+            }
+            body {
+              padding: 0;
+              margin: 0;
+              font-family: Helvetica,Arial,sans-serif;
+            }
+            .wrapper {
+              max-width: 800px;
+              margin: 0 auto;
+            }
+            .top-logo {
+              width: 100%;
+            }
+            .top-logo img {
+              display: block;
+              margin: 40px auto 20px;
+              max-width: 80%;
+              height: auto;
+              max-height: 120px;
+            }
+            .message-box-wrapper {
+              padding: 40px 20px 0;
+              border-top: solid 1px rgb(231, 235, 239);
+              border-bottom: solid 1px rgb(231, 235, 239);
+            }
+            .message-box {
+              padding: 20px;
+              border: solid 1px rgb(240, 244, 246);
+              border-radius: 4px;
+              background: rgb(253, 253, 253);
+              width: 100%;
+            }
+            .message-cta {
+              text-align: center;
+            }
+            .btn-view-message {
+              background: #159488;
+              color: white;
+              border-radius: 4px;
+              text-decoration: none;
+              padding: 20px 30px;
+              margin: 40px 0;
+              letter-spacing: 1px;
+              display: inline-block;
+            }
+            .footer-note {
+              border-bottom: solid 1px rgb(231, 235, 239);
+              text-align: center;
+              padding: 40px 20px;
+              line-height: 1.4;
+            }
+            .message-info {
+              display:-webkit-flex;
+              display:-ms-flexbox;
+              display: flex;
+              align-items: center;
+            }
+            .message-info .author {
+              display:-webkit-flex;
+              display:-ms-flexbox;
+              display: flex;
+              align-items: center;
+              margin-right: 12px;
+            }
+            .message-info .author img {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              margin-right: 12px;
+            }
+            .message-info .author .sender {
+              color: #191919;
+            }
+            .message-info .created {
+              font-style: italic;
+              color: #909090;
+            }
+            .message-box .message {
+              font-style: italic;
+              font-size: 1.3em;
+              white-space: pre-wrap;
+              margin-bottom: 0;
+            }
+            @media screen and (max-width: 600px) {
+              .message-info {
+                flex-direction: column;
+                align-items: flex-start;
+              }
+              .message-info .created {
+                font-size: 0.7em;
+                margin-top: 10px;
+              }
+            }
+          </style>
         </head>
-        <body style="font-family: Helvetica,Arial,sans-serif;">
-          <div style="width: 60%;
-                      margin: 6% 20% 2% 20%;
-                      padding-bottom: 1%;
-                      align-items: center;
-                      border-bottom: 1px solid #d8d8d8;
-                      text-align: center;">
-            <img src="https://www.usps.com/assets/images/business/advertise-with-mail/logos/growmail_logo-2.png" style="height: 100px" />
-          </div>
-          <div style="width: 54%;
-                      align-items: center;
-                      margin: 3% 21% 5% 21%;
-                      padding: 2%;
-                      background: #fafafa;
-                      border: 1px solid #d8d8d8;
-                      border-radius: 8px;">
-            <div style="padding: 2% 2%;
-                        display: flex;
-                        align-items: center;">
-              <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(3).jpg" 
-                style=" width: 32px;
-                        height: 32px;
-                        border-radius: 16px;
-                        margin-right: 16px;"/>
-              <span style="color: #191919; font-size: medium;">${recipientName}</span>
-              <span style="font-style: italic; font-size: medium; margin-left: 20px; color: #909090;">October 16th, 2018 @ 5:43PM</span>
+        <body>
+          <div class="wrapper">
+            <div class="top-logo">
+              <img src="https://www.usps.com/assets/images/business/advertise-with-mail/logos/growmail_logo-2.png" />
             </div>
-            <div style="width: 60%; padding: 1% 2%;">
-              <pre style="color: #343434; font-style: italic; font-size: large;">${emailBody}</pre>
+            <div class="message-box-wrapper">
+              <div class="message-box">
+                <div class="message-info">
+                  <div class="author">
+                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(3).jpg" />
+                    <span class="sender">${recipientName}</span>
+                  </div>
+                  <span class="created">October 16th, 2018 @ 5:43PM</span>
+                </div>
+                <pre class="message">${emailBody}</pre>
+              </div>
+              <div class="message-cta">
+                <a class="btn-view-message">VIEW MESSAGE</a>
+              </div>
             </div>
-          </div>
-          <div style=" width: 60%;
-                      align-items: center;
-                      text-align: center;
-                      height: 10%;
-                      margin-left: 20%;
-                      margin-bottom: 4%;">
-            <a href="" style="width: 40%;
-                              text-align: center;
-                              height: 4%;
-                              padding: 3% 6% 3% 6%;
-                              background: #159488;
-                              color: white;
-                              border-radius: 8px;
-                              text-decoration: none;">
-              VIEW MESSAGE
-            </a>
-          </div>
-          <div style="width: 60%;
-                      text-align: center;
-                      border-top: 1px solid #d8d8d8;
-                      border-bottom: 1px solid #d8d8d8;
-                      margin-left: 20%;
-                      margin-right: 20%;
-                      padding: 3% 0% 3% 0%;">
-            <span style="color: #595959; font-size: medium;">You can respond to this message by replying directly</span>
+            <div class="footer-note">
+              <span>You can respond to this message by replying directly to this email</span>
+            </div>
           </div>
         </body>
       </html>`;
