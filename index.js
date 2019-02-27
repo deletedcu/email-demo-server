@@ -47,8 +47,8 @@ app.post('/send', async function (req, res) {
                       align-items: center;
                       margin: 3% 21% 5% 21%;
                       padding: 2%;
-                      background: #f4f4f4;
-                    border: 1px solid #d8d8d8;
+                      background: #fafafa;
+                      border: 1px solid #d8d8d8;
                       border-radius: 8px;">
             <div style="padding: 2% 2%;
                         display: flex;
