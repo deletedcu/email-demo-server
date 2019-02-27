@@ -16,8 +16,8 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.listen(80, () => {
-  console.log('server is running on port 80');
+app.listen(3001, () => {
+  console.log('server is running on port 3001');
 });
 
 app.post('/send', async function (req, res) {
